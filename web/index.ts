@@ -7,6 +7,7 @@ import serveStatic from "serve-static";
 import shopify from "./shopify";
 import GDPRWebhookHandlers from "./gdpr";
 import type { ProcessWebhooksMiddlewareParams } from "@shopify/shopify-app-express";
+import productCreator from "./product-creator";
 
 const PORT = parseInt(
   process.env.BACKEND_PORT || process.env.PORT || "3000",
@@ -46,11 +47,26 @@ app.get("/api/products/count", async (_req, res) => {
   res.status(200).send(countData);
 });
 
+app.get("/api/products/create", async (_req, res) => {
+  let status = 200;
+  let error = null;
+
+  try {
+    await productCreator(res.locals.shopify.session);
+  } catch (e: any) {
+    console.log(`Failed to process products/create: ${e.message}`);
+    status = 500;
+    error = e.message;
+  }
+  res.status(status).send({ success: status === 200, error });
+});
+
+// REST call example
 app.get("/api/collection", async (req, res) => {
   try {
     const countData = await shopify.api.rest.Collection.find({
       session: res.locals.shopify.session,
-      id: 282714669113
+      id: 1// you collection id here
     });
     res.status(200).json(countData);
   } catch (e: any) {
