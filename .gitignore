@@ -26,3 +26,7 @@ extensions/*/build
 
 # Node library SQLite database
 web/database.sqlite
+
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
