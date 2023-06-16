@@ -25,7 +25,7 @@ dist/
 extensions/*/build
 
 # Node library SQLite database
-web/database.sqlite
+web/backend/database.sqlite
 
 yarn.lock
 package-lock.json

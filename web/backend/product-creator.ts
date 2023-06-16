@@ -1,72 +1,72 @@
-import { GraphqlQueryError } from "@shopify/shopify-api";
-import shopify from "./shopify.js";
+import { GraphqlQueryError } from '@shopify/shopify-api';
+import shopify from './shopify.js';
 
 const ADJECTIVES = [
-  "autumn",
-  "hidden",
-  "bitter",
-  "misty",
-  "silent",
-  "empty",
-  "dry",
-  "dark",
-  "summer",
-  "icy",
-  "delicate",
-  "quiet",
-  "white",
-  "cool",
-  "spring",
-  "winter",
-  "patient",
-  "twilight",
-  "dawn",
-  "crimson",
-  "wispy",
-  "weathered",
-  "blue",
-  "billowing",
-  "broken",
-  "cold",
-  "damp",
-  "falling",
-  "frosty",
-  "green",
-  "long",
+  'autumn',
+  'hidden',
+  'bitter',
+  'misty',
+  'silent',
+  'empty',
+  'dry',
+  'dark',
+  'summer',
+  'icy',
+  'delicate',
+  'quiet',
+  'white',
+  'cool',
+  'spring',
+  'winter',
+  'patient',
+  'twilight',
+  'dawn',
+  'crimson',
+  'wispy',
+  'weathered',
+  'blue',
+  'billowing',
+  'broken',
+  'cold',
+  'damp',
+  'falling',
+  'frosty',
+  'green',
+  'long',
 ];
 
 const NOUNS = [
-  "waterfall",
-  "river",
-  "breeze",
-  "moon",
-  "rain",
-  "wind",
-  "sea",
-  "morning",
-  "snow",
-  "lake",
-  "sunset",
-  "pine",
-  "shadow",
-  "leaf",
-  "dawn",
-  "glitter",
-  "forest",
-  "hill",
-  "cloud",
-  "meadow",
-  "sun",
-  "glade",
-  "bird",
-  "brook",
-  "butterfly",
-  "bush",
-  "dew",
-  "dust",
-  "field",
-  "fire",
-  "flower",
+  'waterfall',
+  'river',
+  'breeze',
+  'moon',
+  'rain',
+  'wind',
+  'sea',
+  'morning',
+  'snow',
+  'lake',
+  'sunset',
+  'pine',
+  'shadow',
+  'leaf',
+  'dawn',
+  'glitter',
+  'forest',
+  'hill',
+  'cloud',
+  'meadow',
+  'sun',
+  'glade',
+  'bird',
+  'brook',
+  'butterfly',
+  'bush',
+  'dew',
+  'dust',
+  'field',
+  'fire',
+  'flower',
 ];
 
 export const DEFAULT_PRODUCTS_COUNT = 5;
@@ -84,7 +84,7 @@ const CREATE_PRODUCTS_MUTATION = `
 export default async function productCreator(
   session: any,
   count = DEFAULT_PRODUCTS_COUNT
-) {
+): Promise<void> {
   const client = new shopify.api.clients.Graphql({ session });
 
   try {
@@ -112,12 +112,12 @@ export default async function productCreator(
   }
 }
 
-function randomTitle() {
+function randomTitle(): string {
   const adjective = ADJECTIVES[Math.floor(Math.random() * ADJECTIVES.length)];
   const noun = NOUNS[Math.floor(Math.random() * NOUNS.length)];
   return `${adjective} ${noun}`;
 }
 
-function randomPrice() {
+function randomPrice(): number {
   return Math.round((Math.random() * 10 + Number.EPSILON) * 100) / 100;
 }
