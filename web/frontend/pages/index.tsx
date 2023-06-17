@@ -1,13 +1,12 @@
 import {
   Page,
   Layout,
-  TextContainer,
   Image,
-  Stack,
   Link,
   Text,
   LegacyCard,
   LegacyStack,
+  VerticalStack,
 } from "@shopify/polaris";
 import { TitleBar } from "@shopify/app-bridge-react";
 import { useTranslation, Trans } from "react-i18next";
@@ -43,7 +42,7 @@ export default function HomePage() {
               alignment="center"
             >
               <LegacyStack.Item fill>
-                <TextContainer spacing="loose">
+                <VerticalStack gap="5">
                   <Text as="h2" variant="headingMd">
                     {t("HomePage.heading")}
                   </Text>
@@ -83,7 +82,7 @@ export default function HomePage() {
                       }}
                     />
                   </p>
-                </TextContainer>
+                </VerticalStack>
               </LegacyStack.Item>
               <LegacyStack.Item>
                 <div style={{ padding: "0 20px" }}>

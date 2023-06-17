@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextContainer, Text, LegacyCard } from '@shopify/polaris';
+import { Text, LegacyCard, VerticalStack } from '@shopify/polaris';
 import { Toast } from '@shopify/app-bridge-react';
 import { useTranslation } from 'react-i18next';
 import { useAppQuery, useAuthenticatedFetch } from '../hooks';
@@ -77,7 +77,7 @@ export function ProductsCard() {
           loading: isLoading,
         }}
       >
-        <TextContainer spacing="loose">
+        <VerticalStack gap="5">
           <p>{t('ProductsCard.description')}</p>
           <Text as="h4" variant="headingMd">
             {t('ProductsCard.totalProductsHeading')}
@@ -85,7 +85,7 @@ export function ProductsCard() {
               {isLoadingCount ? '-' : data.count}
             </Text>
           </Text>
-        </TextContainer>
+        </VerticalStack>
       </LegacyCard>
     </>
   );

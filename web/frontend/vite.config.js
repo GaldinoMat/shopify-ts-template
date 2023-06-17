@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import https from "https";
 import react from "@vitejs/plugin-react";
 
 if (
@@ -36,7 +35,7 @@ if (host === "localhost") {
 } else {
   hmrConfig = {
     protocol: "wss",
-    host: host,
+    host,
     port: process.env.FRONTEND_PORT,
     clientPort: 443,
   };

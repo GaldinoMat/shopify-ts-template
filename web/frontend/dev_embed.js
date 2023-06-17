@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-absolute-path
 import RefreshRuntime from "/@react-refresh";
 
 RefreshRuntime.injectIntoGlobalHook(window);
