@@ -1,10 +1,10 @@
-import { ReactNode, useCallback } from "react";
+import { type ReactNode, useCallback } from "react";
 import { AppProvider } from "@shopify/polaris";
 import { useNavigate } from "@shopify/app-bridge-react";
 import "@shopify/polaris/build/esm/styles.css";
 import { getPolarisTranslations } from "../../utils/i18nUtils";
 import React from "react";
-import { LinkLikeComponentProps } from "@shopify/polaris/build/ts/latest/src/utilities/link";
+import { type LinkLikeComponentProps } from "@shopify/polaris/build/ts/latest/src/utilities/link";
 
 function AppBridgeLink({ url, children, external, ...rest }: LinkLikeComponentProps) {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function AppBridgeLink({ url, children, external, ...rest }: LinkLikeComponentPr
 
   const IS_EXTERNAL_LINK_REGEX = /^(?:[a-z][a-z\d+.-]*:|\/\/)/;
 
-  if (external || IS_EXTERNAL_LINK_REGEX.test(url)) {
+  if (external ?? IS_EXTERNAL_LINK_REGEX.test(url)) {
     return (
       <a {...rest} href={url} target="_blank" rel="noopener noreferrer">
         {children}

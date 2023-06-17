@@ -53,7 +53,7 @@ function useRoutes(pages: any) {
         /**
          * Convert /[handle].jsx and /[...handle].jsx to /:handle.jsx for react-router-dom
          */
-        .replace(/\[(?:[.]{3})?(\w+?)\]/g, (_match, param) => `:${param}`);
+        .replace(/\[(?:[.]{3})?(\w+?)\]/g, (_match, param) => `:${String(param)}`);
 
       if (path.endsWith("/") && path !== "/") {
         path = path.substring(0, path.length - 1);

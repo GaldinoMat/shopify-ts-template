@@ -1,4 +1,4 @@
-import { ReactNode, useMemo, useState } from "react";
+import { type ReactNode, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Provider } from "@shopify/app-bridge-react";
 import { Banner, Layout, Page } from "@shopify/polaris";
@@ -41,7 +41,7 @@ export function AppBridgeProvider({ children }: IAppBridgeProvider) {
   // See: https://stackoverflow.com/questions/60482318/version-of-usememo-for-caching-a-value-that-will-never-change
   const [appBridgeConfig] = useState(() => {
     const host =
-      new URLSearchParams(location.search).get("host") ||
+      new URLSearchParams(location.search).get("host") ??
       window.__SHOPIFY_DEV_HOST;
 
     window.__SHOPIFY_DEV_HOST = host;

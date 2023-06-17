@@ -1,9 +1,9 @@
 import { Redirect } from "@shopify/app-bridge/actions";
 import { useAppBridge, Loading } from "@shopify/app-bridge-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Banner, Layout, Page } from "@shopify/polaris";
-import React from "react";
+
 
 export default function ExitIframe() {
   const app = useAppBridge();
