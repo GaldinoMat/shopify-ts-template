@@ -1,5 +1,6 @@
 {
-  "name": "my-node-app",
+  "name": "my-ts-node-app",
+  "author": "GaldinoMat",
   "version": "1.0.0",
   "main": "web/backend/index.ts",
   "license": "UNLICENSED",
